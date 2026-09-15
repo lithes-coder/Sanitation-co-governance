@@ -1,0 +1,47 @@
+[
+  {
+    "complaint_id": "CMP-1784299350906-7544",
+    "ward": "Ward 1 - Central",
+    "complaint_type": "Illegal Dumping",
+    "description": "In the Streets , we found , garbages dumped ..",
+    "photo": null,
+    "latitude": 12.939166237076167,
+    "longitude": 80.14377806237637,
+    "date_reported": "2026-07-17 20:12:30",
+    "date_resolved": "2026-07-17 20:13:59",
+    "citizen_satisfaction": null,
+    "community_verification_score": null,
+    "status": "Resolved",
+    "created_by": "john@example.com"
+  },
+  {
+    "complaint_id": "CMP-1784301556589-6607",
+    "ward": "Ward 6 - Hilltop",
+    "complaint_type": "Hazardous Waste",
+    "description": "pls check!!",
+    "photo": null,
+    "latitude": 12.939125741174763,
+    "longitude": 80.14376946932427,
+    "date_reported": "2026-07-17 20:49:16",
+    "date_resolved": "2026-08-14 14:07:06",
+    "citizen_satisfaction": null,
+    "community_verification_score": null,
+    "status": "Resolved",
+    "created_by": "sairamshrini9@gmail.com"
+  },
+  {
+    "complaint_id": "CMP-1786696554601-5726",
+    "ward": "Ward 5 - Westfield",
+    "complaint_type": "Hazardous Waste",
+    "description": "blockage",
+    "photo": null,
+    "latitude": 12.93912263971158,
+    "longitude": 80.14381859896868,
+    "date_reported": "2026-08-14 14:05:54",
+    "date_resolved": "2026-08-14 14:07:01",
+    "citizen_satisfaction": null,
+    "community_verification_score": null,
+    "status": "Resolved",
+    "created_by": "Ne16@gmail.com"
+  }
+]

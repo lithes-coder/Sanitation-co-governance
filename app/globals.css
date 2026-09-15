@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* Live map pin pulse for fresh complaints */
+@keyframes pin-pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.map-pin-pulse {
+  animation: pin-pulse 1.8s ease-out infinite;
+  transform-origin: center;
+}
+
+.map-pin-pause:hover .map-pin-pulse {
+  animation-play-state: paused;
+}
+
+/* Rich map popup styling (dark theme friendly) */
+.leaflet-popup-content-wrapper {
+  background: #171b26 !important;
+  color: #e8ecf3 !important;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.leaflet-popup-tip {
+  background: #171b26 !important;
+}
+
+.leaflet-popup-close-button {
+  color: #8b93a3 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #e8ecf3 !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-family: inherit;
+}
+
+.leaflet-container {
+  font-family: inherit;
+  background: #0d1117;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.13 0.02 240);
+  --foreground: oklch(0.95 0.01 230);
+  --card: oklch(0.17 0.02 240);
+  --card-foreground: oklch(0.95 0.01 230);
+  --popover: oklch(0.17 0.02 240);
+  --popover-foreground: oklch(0.95 0.01 230);
+  --primary: oklch(0.55 0.15 240);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.20 0.02 240);
+  --secondary-foreground: oklch(0.85 0.01 230);
+  --muted: oklch(0.20 0.015 240);
+  --muted-foreground: oklch(0.60 0.02 230);
+  --accent: oklch(0.55 0.14 160);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.25 0.02 240);
+  --input: oklch(0.22 0.02 240);
+  --ring: oklch(0.55 0.15 240);
+  --chart-1: oklch(0.55 0.15 240);
+  --chart-2: oklch(0.55 0.14 160);
+  --chart-3: oklch(0.65 0.18 40);
+  --chart-4: oklch(0.70 0.15 80);
+  --chart-5: oklch(0.50 0.12 300);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.12 0.03 240);
+  --sidebar-foreground: oklch(0.88 0.01 230);
+  --sidebar-primary: oklch(0.60 0.16 240);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.20 0.04 240);
+  --sidebar-accent-foreground: oklch(0.92 0.01 230);
+  --sidebar-border: oklch(0.22 0.03 240);
+  --sidebar-ring: oklch(0.60 0.16 240);
+  --success: oklch(0.55 0.14 160);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.75 0.15 80);
+  --warning-foreground: oklch(0.15 0.05 80);
+}
+
+
+
+@theme inline {
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── Table Alternating Rows ─────────────────────── */
+table tbody tr:nth-child(even) {
+  background-color: oklch(0.15 0.015 240);
+}
+table tbody tr {
+  transition: background-color 0.15s ease;
+}
+table tbody tr:hover {
+  background-color: oklch(0.19 0.02 240);
+}
+
+/* ── Page Transition Animation ──────────────────── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main > div, main > section, main > div > div {
+  animation: fade-in-up 0.3s ease-out;
+}
+
+/* ══════════════════════════════════════════════════
+   GLOBAL SMOKY HOVER EFFECTS — SITE-WIDE
+   ══════════════════════════════════════════════════ */
+
+/* ── Cards: White glow border on hover ─────────── */
+card,
+[class*="rounded-lg"][class*="border"],
+[class*="rounded-xl"][class*="border"],
+[class*="rounded-2xl"][class*="border"] {
+  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+card:hover,
+[class*="rounded-lg"][class*="border"]:hover,
+[class*="rounded-xl"][class*="border"]:hover,
+[class*="rounded-2xl"][class*="border"]:hover {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 0 15px rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+/* ── Buttons: Smoky glow ───────────────────────── */
+button:not([type="submit"]):not([aria-label]) {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+button:not([type="submit"]):not([aria-label]):hover {
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Sidebar Nav Links: Smoky gradient hover ───── */
+nav a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav a:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.03),
+    0 0 10px rgba(255, 255, 255, 0.02);
+}
+
+/* ── KPI Cards: Bright smoky glow ──────────────── */
+[class*="bg-card"] {
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+[class*="bg-card"]:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.08),
+    0 0 40px rgba(255, 255, 255, 0.03),
+    0 8px 30px -10px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* ── Table Rows: Smoky hover ───────────────────── */
+table tbody tr {
+  transition: all 0.25s ease;
+}
+table tbody tr:hover {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, transparent 100%);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+/* ── Badge/Tag Hover ───────────────────────────── */
+[class*="rounded-full"][class*="bg"] {
+  transition: all 0.25s ease;
+}
+
+/* ── Login Page Dark Glow ──────────────────────── */
+.bg-black [class*="rounded-xl"]:hover,
+.bg-black [class*="rounded-2xl"]:hover {
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.06),
+    0 0 50px rgba(255, 255, 255, 0.03),
+    0 8px 30px -8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── CTA Button Glow ───────────────────────────── */
+a[class*="bg-primary"] {
+  transition: all 0.3s ease;
+}
+a[class*="bg-primary"]:hover {
+  box-shadow:
+    0 0 20px rgba(99, 102, 241, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.15),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Floating Chat Button: Pulse Glow ──────────── */
+button[aria-label*="assistant"] {
+  transition: all 0.3s ease;
+}
+button[aria-label*="assistant"]:hover {
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.08);
+}

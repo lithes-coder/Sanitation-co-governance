@@ -1,0 +1,123 @@
+SANITATION CO-GOVERNANCE PLATFORM
+
+ABOUT THE PLATFORM
+
+The Sanitation Co-Governance Platform is a citizen-focused digital platform for reporting, tracking, and collaboratively verifying sanitation-related complaints.
+
+The platform supports communication between citizens and administrators and aims to improve transparency, accountability, and participation in sanitation management.
+
+The platform is related to Sustainable Development Goal (SDG) 6, which focuses on clean water and sanitation.
+
+PLATFORM USERS
+
+There are two main user roles:
+
+1. Citizen
+2. Administrator
+
+CITIZEN FEATURES
+
+Citizens can:
+
+- Register and log in to the platform.
+- Submit sanitation-related complaints.
+- Select the relevant ward.
+- Select the complaint type.
+- Provide a description of the problem.
+- Upload a photo when reporting a complaint.
+- Provide location information when available.
+- Track the status of submitted complaints.
+- View complaint history.
+- Provide a satisfaction rating after resolution.
+- Participate in community verification of complaints.
+
+ADMINISTRATOR FEATURES
+
+Administrators can:
+
+- Access the administrator dashboard.
+- View submitted complaints.
+- Monitor complaint status.
+- Update complaint status.
+- Review sanitation complaints submitted by citizens.
+- Manage complaints throughout their lifecycle.
+- Monitor complaints that require escalation.
+
+COMPLAINT STATUS
+
+A complaint can have the following statuses:
+
+Pending:
+The complaint has been submitted but has not yet been actively processed.
+
+In Progress:
+The complaint is currently being investigated or addressed.
+
+Resolved:
+The reported issue has been addressed and marked as resolved.
+
+Escalated:
+The complaint has exceeded the defined service-level threshold and requires additional attention.
+
+COMPLAINT REPORTING
+
+When submitting a complaint, a citizen can provide:
+
+- Ward
+- Complaint type
+- Description
+- Photo
+- Latitude
+- Longitude
+
+Each complaint receives a unique complaint ID.
+
+Complaint records also contain the reporting date and the citizen who created the complaint.
+
+COMMUNITY VERIFICATION
+
+The platform supports community verification of resolved complaints.
+
+Citizens can provide a verification score for a complaint.
+
+If the verification score is below the configured verification threshold, the complaint can be reopened and moved back to In Progress.
+
+This allows the community to provide feedback about whether a reported sanitation issue has actually been addressed.
+
+CITIZEN SATISFACTION
+
+Citizens can provide a satisfaction rating for a complaint.
+
+The satisfaction rating helps capture citizen feedback after the complaint has been addressed.
+
+AUTOMATIC ESCALATION
+
+The platform includes automatic escalation logic.
+
+Pending and In Progress complaints are checked against the configured SLA threshold.
+
+If a complaint remains unresolved beyond the configured threshold, its status can automatically change to Escalated.
+
+PURPOSE OF THE PLATFORM
+
+The platform aims to:
+
+- Improve citizen participation in sanitation governance.
+- Make sanitation complaints easier to report.
+- Improve transparency in complaint handling.
+- Help administrators monitor sanitation issues.
+- Enable citizens to track complaint progress.
+- Support community-based verification.
+- Improve accountability in sanitation service delivery.
+
+SDG CONNECTION
+
+The platform supports the broader objectives of SDG 6 by promoting digital participation and better management of sanitation-related issues.
+
+The platform provides a mechanism through which citizens can report sanitation problems and participate in monitoring their resolution.
+
+IMPORTANT CHATBOT RULE
+
+The AI assistant should answer questions using the information available in the platform's knowledge base.
+
+If the required information is not available in the knowledge base, the assistant should clearly state that it does not have enough information rather than inventing an answer.

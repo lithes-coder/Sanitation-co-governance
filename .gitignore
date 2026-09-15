@@ -1,0 +1,51 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+
+# environment secrets
+.env
+.env.local
+.env*.local
+
+# database (local sqlite)
+prisma/dev.db
+prisma/dev.db-journal
+*.db
+*.db-journal
+
+# generated prisma client (if regenerated locally)
+prisma/generated/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# os junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editors
+.vscode/
+.idea/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# backed-up embedded repo history (local only)
+.git-backup/
+**/.git-backup/
+
+# freebuff workspace metadata (local only)
+.freebuff/
+
+# typescript build info
+*.tsbuildinfo
+next-env.d.ts

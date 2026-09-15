@@ -1,0 +1,114 @@
+// Sanitation Co-Governance Platform — data model
+// SQLite for zero-config local dev (see datasource below)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  email        String   @id
+  passwordHash String
+  name         String
+  role         String // "citizen" | "officer" | "admin"
+  createdAt    DateTime @default(now())
+
+  complaints     Complaint[]        @relation("ComplaintCreator")
+}
+
+model Complaint {
+  complaint_id               String    @id @default(cuid())
+  ward                       String
+  complaint_type             String
+  description                String
+  photo                      String? // base64 data URL
+  latitude                   Float?
+  longitude                  Float?
+
+  // Pipeline
+  status                     String    @default("Pending")
+  // Pending -> SentToCorporation -> Verified -> Assigned -> In Progress -> Resolved -> Closed
+  // Escalated can occur from SLA breach; Rejected when officer marks spam
+  priority                   String    @default("Medium") // Critical | High | Medium | Low
+  severity_score             Int       @default(50) // 0-100 computed by severity engine
+  severity_reason            String    @default("")
+  sla_due_at                 DateTime?
+  department                 String? // responsible dept / zone sanitation contractor
+  gcc_ticket_ref             String? // authority gateway ticket reference
+  verification_status        String    @default("Unverified") // Unverified | Verified | NeedsInfo | Spam
+  verification_note          String? // officer note on verify
+  assigned_to                String? // officer email who owns it
+  resolution_note            String?
+  after_photo                String?
+
+  // Feedback
+  citizen_satisfaction       Int?
+  community_verification_score Int?
+  reopened_count             Int       @default(0)
+  trust_points               Int       @default(0)
+
+  date_reported              DateTime  @default(now())
+  date_resolved              DateTime?
+  date_closed                DateTime?
+  escalated_at               DateTime?
+  acked_at                   DateTime? // authority gateway ack time
+  verified_at                DateTime?
+  updated_at                 DateTime  @default(now()) @updatedAt
+
+  created_by                 String
+  creator                    User      @relation("ComplaintCreator", fields: [created_by], references: [email])
+
+  events                     ComplaintEvent[]
+  notifications              Notification[]
+
+  @@index([status])
+  @@index([ward])
+  @@index([created_by])
+  @@index([priority])
+}
+
+model ComplaintEvent {
+  id           String   @id @default(cuid())
+  complaint_id String
+  complaint    Complaint @relation(fields: [complaint_id], references: [complaint_id], onDelete: Cascade)
+  type         String // submitted | severity_scored | sent_to_corporation | acked | verified | rejected | needs_info | assigned | in_progress | resolved | citizen_confirmed | citizen_rejected | reopened | escalated | updated
+  actor        String // user email or "system"
+  actor_role   String   @default("system")
+  message      String
+  meta         String   @default("{}") // JSON: { priority, department, ticketRef, severity, ... }
+  createdAt    DateTime @default(now())
+
+  @@index([complaint_id])
+  @@index([createdAt])
+}
+
+model Notification {
+  id           String   @id @default(cuid())
+  recipient    String // user email
+  type         String // complaint_submitted | verified | assigned | resolved | citizen_confirmed | citizen_rejected | reopened | escalated | info
+  title        String
+  body         String
+  complaint_id String?
+  complaint    Complaint? @relation(fields: [complaint_id], references: [complaint_id], onDelete: Cascade)
+  read         Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([recipient, read])
+  @@index([recipient, createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actor     String
+  action    String
+  entity    String // "complaint" | "user" | "system"
+  entityId  String?
+  details   String   @default("{}")
+  prevHash  String?
+  hash      String
+  createdAt DateTime @default(now())
+}
