@@ -1,61 +1,64 @@
-# Deploying SCGIP to Railway
+# Deploying SCGIP to Vercel (+ Neon Postgres)
 
-Two services, one volume, ~10 minutes. Region: **Singapore** (closest to Chennai → fastest loads for you and your audience).
+Free forever, no credit card, ~10 minutes. Local dev stays on SQLite — only Vercel's build swaps to Postgres.
 
 ---
 
-## 0. Before you start
+## 0. What's already done (in the repo)
 
-- ✅ Security fixes pushed to GitHub (README credentials + seed backdoor removed)
-- The repo now contains `railway.json` (web), `agenticAI/railway.json` (AI service), and the `start:prod` script
+- `vercel.json` — build-time Postgres swap + schema sync + 60s function limits for SSE/chat
+- `lib/store.tsx` — 8s visible-tab poll as real-time safety net (serverless instances can't push SSE cross-instance)
+- AI chat falls back to rule-based answers when FastAPI is unreachable — no second service needed on Vercel
+- `scripts/prod-init.ts` — creates your sole admin at boot from env vars
 
-## 1. Create the web service (Next.js)
+## 1. Create the Postgres database (Neon — free tier)
 
-1. Go to [railway.com](https://railway.com) → **New Project** → **Deploy from GitHub repo** → pick `Sanitation-co-governance`
-2. Railway auto-detects the root `railway.json` → builds with nixpacks
-3. Open the service → **Settings → Networking → Generate Domain** → note the URL
-4. **Settings → Region → Singapore**
+1. Go to [neon.tech](https://neon.tech) → sign up with GitHub
+2. Create project: name `scgip`, region **Singapore**
+3. Copy the **connection string** — looks like:
+   `postgresql://user:pass@ep-xxx.ap-southeast-1.aws.neon.tech/neondb?sslmode=require`
+4. **Add `&pgbouncer=true&connect_timeout=15` to the end** (needed for serverless connection limits)
 
-### Variables (service → Variables)
+## 2. Deploy the web app (Vercel)
+
+1. Go to [vercel.com](https://vercel.com) → sign in with GitHub
+2. **Add New → Project** → Import `lithes-coder/Sanitation-co-governance`
+3. Vercel auto-detects Next.js — don't touch build settings (`vercel.json` handles the Postgres swap)
+4. Before clicking Deploy, open **Environment Variables** and add:
 
 | Name | Value | Why |
 |---|---|---|
-| `DATABASE_URL` | `file:/data/prod.db` | SQLite on the persistent volume (step 2) |
-| `AUTH_SECRET` | long random string (generate fresh!) | session signing — **never reuse your local one** |
+| `DATABASE_URL` | your Neon string (with `&pgbouncer=true&connect_timeout=15`) | Postgres on Neon |
+| `AUTH_SECRET` | long random string — generate fresh: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` | session signing |
 | `ADMIN_EMAIL` | `litheshs2007@gmail.com` | your sole admin |
-| `ADMIN_PASSWORD` | a strong NEW password (only here, never in code/chat) | used once by `prod-init` at boot |
-| `FASTAPI_URL` | `http://agenticai.railway.internal:8000` | internal link to the AI service (adjust to the actual service name) |
-| `AUTHORITY_WEBHOOK_URL` / `AUTHORITY_WEBHOOK_SECRET` | *(optional — leave unset for mock gateway)* | real GCC integration later |
+| `ADMIN_PASSWORD` | a strong NEW password (set only here — never in code/chat) | used once at boot by prod-init |
 
-> Generate `AUTH_SECRET`: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+   > ⚠️ `ADMIN_PASSWORD` must be **8+ characters** or prod-init skips creating the admin.
+5. Click **Deploy** — first build takes ~3-4 minutes (Prisma schema syncs to Neon automatically)
 
-### 2. Attach the volume
+## 3. First-deploy checklist
 
-Service → **Volumes → New Volume** → mount path **`/data`** → Singapore region.
-SQLite writes to `/data/prod.db`, which survives every redeploy.
+- [ ] Build logs show `prisma db push` finishing without errors
+- [ ] Visit `https://your-app.vercel.app/login` — loads in < 3s
+- [ ] Headers: `curl -sI https://your-app.vercel.app | grep -iE "x-frame|content-security|x-content"` → all present
+- [ ] Log in as admin → Ward Map loads with OSM tiles
+- [ ] Submit a test complaint → pin appears within ~8s on a second tab (SSE + poll safety net)
+- [ ] AI chat answers (rule-based fallback — fully functional without the Python service)
 
-## 3. Create the AI service (FastAPI)
+## 4. The AI assistant (optional, later)
 
-1. Same project → **New → GitHub Repo** → same repo, but set **Root Directory = `agenticAI`**
-2. Railway picks up `agenticAI/railway.json` → runs `uvicorn server:app --host 0.0.0.0 --port $PORT`
-3. Optional variables: `LLM_PROVIDER`, `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` (works without them — falls back to rule-based mode)
-4. No volume, no public domain needed (web app talks to it over the private network)
+The FastAPI service can't run on Vercel. When you want the full agentic AI back:
 
-## 4. First deploy checklist
-
-- [ ] Web service logs show `[prod-init] admin ready: litheshs2007@gmail.com`
-- [ ] `https://YOUR-APP.up.railway.app/login` loads (railway healthcheck passes on `/login`)
-- [ ] Headers: `curl -sI https://YOUR-APP.up.railway.app | grep -iE "x-frame|content-security|x-content"` → all present
-- [ ] Log in as admin → map loads with tiles (CSP already allows OSM)
-- [ ] Submit a test complaint in one tab → pin appears **live** in another tab (SSE works)
-- [ ] Delete the two `REALTIME-TEST` complaints if you don't want them in the demo
+- Deploy `agenticAI/` on **Hugging Face Spaces** (free) or Railway, then set `FASTAPI_URL` in Vercel env vars to its public URL. Until then the built-in fallback handles chat.
 
 ## 5. After go-live
 
 - Put the URL at the top of the README + GitHub "About" field
-- Run Strix against the **production** URL (Groq key first) → add the production pentest line to LinkedIn
-- Don't commit `.env` — Railway Variables is the single source of truth
+- Strix pentest the production URL (Groq key first) → LinkedIn line: "OWASP ZAP DAST + AI-agent pentest on production build"
+- Vercel free tier (Hobby): non-commercial use — perfect for a student project demo
 
-## Cost note
+## Notes & limits (free tier)
 
-$5 trial credit ≈ 2 weeks of both services running. After that the Hobby plan (~$5/mo) covers it; expect ~$8/mo with the AI service + volume included.
+- Vercel Hobby: 100 GB bandwidth/mo, serverless function 60s max (set for SSE/chat) — plenty for demos
+- Neon free: 0.5 GB storage (~50k+ complaints), scales to zero after 5 min idle; first request after idle adds ~500ms warm-up, then fast again
+- Your local dev remains SQLite + instant SSE — untouched

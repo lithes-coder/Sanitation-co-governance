@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "sed -i -e 's/provider = \"sqlite\"/provider = \"postgresql\"/' prisma/schema.prisma && npx prisma generate && npx prisma db push --skip-generate && npm run build",
+  "functions": {
+    "app/api/events/stream/route.ts": { "maxDuration": 60 },
+    "app/api/chat/route.ts": { "maxDuration": 60 }
+  }
+}

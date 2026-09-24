@@ -198,7 +198,20 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         // ignore malformed frames
       }
     }
-    return () => es.close()
+    // Safety net for serverless hosts (Vercel): SSE publishers and subscribers
+    // run in separate instances there, so pushes may not arrive. A light poll
+    // (only while the tab is visible) guarantees live-ish updates everywhere.
+    // On long-running hosts (local/Railway) SSE stays instant; the poll is idle cost.
+    const poll = setInterval(() => {
+      if (document.visibilityState === "visible") {
+        refetchComplaints()
+        refetchNotifications()
+      }
+    }, 8000)
+    return () => {
+      es.close()
+      clearInterval(poll)
+    }
   }, [currentUser, refetchComplaints, refetchNotifications])
 
   // ── Auth actions ──────────────────────────────────────────────
