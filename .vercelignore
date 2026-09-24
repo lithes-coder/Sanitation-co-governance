@@ -1,0 +1,20 @@
+# Personal / non-app files — never upload to Vercel deployments
+Lithesh-Resume-Updated.md
+Lithesh-Resume-Updated.pdf
+SCGIP-Demo-Screenshots.pdf
+SCGIP-Presentation.pptx
+ppt-build/
+resume-html/
+resume-updates.md
+gform-submission.md
+strix_runs/
+security-reports/
+
+# ENV FILES — critical: local .env (SQLite URL) must never ship,
+# it would override Vercel's DATABASE_URL during prisma db push
+.env
+.env*.local
+.env.deploy-secrets
+
+# Python side service (runs elsewhere; rule-based fallback covers chat)
+agenticAI/

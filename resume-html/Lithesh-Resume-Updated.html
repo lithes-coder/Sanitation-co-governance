@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lithesh S — Resume</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Calibri, "Segoe UI", Arial, sans-serif;
+    font-size: 10.5pt; line-height: 1.35; color: #1a1a1a;
+  }
+  header { text-align: center; margin-bottom: 10pt; }
+  header h1 { font-size: 20pt; letter-spacing: 1.5px; color: #0f2b46; }
+  header .contact { font-size: 9.5pt; margin-top: 3pt; color: #333; }
+  header .contact a { color: #1a4d7c; text-decoration: none; }
+  section { margin-top: 9pt; }
+  h2 {
+    font-size: 11.5pt; text-transform: uppercase; letter-spacing: 1.2px;
+    color: #0f2b46; border-bottom: 1.5pt solid #0f2b46;
+    padding-bottom: 2pt; margin-bottom: 6pt;
+  }
+  .entry { margin-bottom: 7pt; break-inside: avoid; page-break-inside: avoid; }
+  .pagebreak { page-break-before: always; }
+  h2 { break-after: avoid; page-break-after: avoid; }
+  .entry:last-child { margin-bottom: 0; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .title { font-weight: bold; font-size: 11pt; }
+  .meta { font-size: 9.5pt; color: #444; }
+  .tech { font-size: 9.5pt; color: #1a4d7c; margin-top: 1pt; }
+  ul { margin: 2pt 0 0 16pt; }
+  li { margin-bottom: 1.5pt; }
+  .edu { display: flex; justify-content: space-between; margin-bottom: 4pt; }
+  .edu .inst { font-weight: bold; }
+  .edu .sub { font-size: 10pt; color: #333; }
+  .skills p { margin-bottom: 2pt; }
+  .skills b { color: #0f2b46; }
+  .twocol { display: flex; gap: 24pt; }
+  .twocol > div { flex: 1; }
+  a { color: #1a4d7c; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>LITHESH S</h1>
+  <div class="contact">
+    Chennai, Tamil Nadu &nbsp;|&nbsp; +91 9342456235 &nbsp;|&nbsp; litheshs2007@gmail.com<br>
+    linkedin.com/in/lithesh-s-613348327 &nbsp;|&nbsp; github.com/lithes-coder
+  </div>
+</header>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu">
+    <div><span class="inst">Sri Sairam Institute of Technology, Chennai</span><br>
+    <span class="sub">Bachelor of Technology (B.Tech) – Information Technology &nbsp;|&nbsp; CGPA: 8.57 / 10</span></div>
+    <div class="meta">2024 – 2028</div>
+  </div>
+  <div class="edu">
+    <div><span class="inst">N.S.N Matriculation Higher Secondary School</span><br>
+    <span class="sub">Higher Secondary Education (Class XII) &nbsp;|&nbsp; 87.5%</span></div>
+  </div>
+  <div class="edu">
+    <div><span class="inst">MCC Campus Matriculation Higher Secondary School</span><br>
+    <span class="sub">Secondary Education (Class X) &nbsp;|&nbsp; 88.0%</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Experience</h2>
+  <div class="entry">
+    <div class="head">
+      <span class="title">Data Science Virtual Intern — CodTech IT Solutions Pvt Ltd</span>
+      <span class="meta">March 2026 – May 2026</span>
+    </div>
+    <ul>
+      <li>Completed a 42-day virtual internship focused on Data Science concepts and applications.</li>
+      <li>Worked on data preprocessing, data analysis, and machine learning fundamentals.</li>
+      <li>Gained hands-on experience through project-based learning using Python and related tools.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="entry">
+    <div class="head">
+      <span class="title">Sanitation Co-Governance Intelligence Platform (SCGIP)</span>
+      <span class="meta">github.com/lithes-coder/Sanitation-co-governance</span>
+    </div>
+    <div class="tech"><b>Technologies:</b> Next.js, TypeScript, Prisma, SQLite, Server-Sent Events, Leaflet, Python (FastAPI)</div>
+    <ul>
+      <li>Built a real-time civic-tech platform where citizens report sanitation issues with photo + GPS evidence and co-verify resolutions with the Greater Chennai Corporation — aligned with UN SDG 6 (born at the B2G Hackathon).</li>
+      <li>Engineered a severity-scoring engine (complaint type × ward risk × evidence) that auto-routes complaints to the right department with SLA deadlines, auto-generates corporation tickets, and auto-escalates breaches.</li>
+      <li>Implemented three role-based portals (citizen / officer / admin), a live ward map with reverse-geocoded GPS pins, instant SSE notifications, and a tamper-evident audit log.</li>
+      <li>Integrated a Python agentic AI assistant (FastAPI) answering queries over live complaint data, with bcrypt-hashed passwords and cookie-session auth.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head">
+      <span class="title">GODMODE — Security Testing Automation Application</span>
+      <span class="meta">github.com/lithes-coder/godmode-security-scanner</span>
+    </div>
+    <div class="tech"><b>Technologies:</b> Python, Flask, HTML, CSS, JavaScript, Render</div>
+    <ul>
+      <li>Developed an end-to-end web application that automates security testing of web applications, simulating OWASP ZAP-style scanning.</li>
+      <li>Implemented scanners for 10+ vulnerability classes including SQL Injection, XSS, CSRF, IDOR, broken authentication, and sensitive data exposure.</li>
+      <li>Built an interactive dashboard with scan statistics, scan history, and professional HTML report generation with severity ratings and remediation steps.</li>
+      <li>Deployed on Render.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head">
+      <span class="title">Query Arena — Gamified SQL &amp; Cybersecurity Learning Platform</span>
+      <span class="meta">github.com/lithes-coder/query-arena</span>
+    </div>
+    <div class="tech"><b>Technologies:</b> React, Vite, JavaScript, Supabase, Netlify</div>
+    <ul>
+      <li>Built a gamified web platform where users solve real SQL challenges — writing and executing queries against sandbox tables with instant validation, hints, and XP-based progression.</li>
+      <li>Developed multiple learning modes: "Debug Arena" for fixing broken SQL queries, CyberQuest missions for cybersecurity awareness (phishing calls, fake UPI scams), and a word-connection puzzle game.</li>
+      <li>Implemented secure authentication with Supabase (OAuth login, protected routes) and user dashboards tracking XP, progress, and challenge history.</li>
+      <li>Deployed on Netlify with continuous deployment from GitHub.</li>
+    </ul>
+  </div>
+
+  <div class="entry pagebreak">
+    <div class="head"><span class="title">Customer Satisfaction Analysis (Data Science Mini Capstone Project)</span></div>
+    <div class="tech"><b>Technologies:</b> Python, Pandas, Scikit-learn, Google Forms</div>
+    <ul>
+      <li>Conducted a survey-based study to collect customer feedback data; performed preprocessing, exploratory analysis, and predictive modeling.</li>
+      <li>Generated insights to identify customer satisfaction trends and support data-driven decision-making.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="title">Push-Up Counter using MediaPipe</span></div>
+    <div class="tech"><b>Technologies:</b> Python, MediaPipe, Computer Vision</div>
+    <ul>
+      <li>Developed a real-time push-up counting application using pose estimation, tracking body landmarks to count repetitions accurately for fitness activity monitoring.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="title">Predictive Maintenance (Internship Project)</span></div>
+    <div class="tech"><b>Technologies:</b> Python, Pandas, Scikit-learn, Matplotlib, Pickle, HTML, CSS</div>
+    <ul>
+      <li>Developed a machine learning-based predictive maintenance system to identify potential equipment failures, with preprocessing, visualization, model training, and a simple prediction UI.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="title">CNN Image Classification (Internship Project)</span></div>
+    <div class="tech"><b>Technologies:</b> Python, TensorFlow</div>
+    <ul>
+      <li>Built a Convolutional Neural Network model for image classification, applying deep learning fundamentals and evaluating performance on training and testing datasets.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head"><span class="title">ETL Data Pipeline (Internship Project)</span></div>
+    <div class="tech"><b>Technologies:</b> Python, Data Processing</div>
+    <ul>
+      <li>Developed an ETL workflow to extract, transform, and organize data for analysis, automating data preparation and improving data handling efficiency.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <p><b>Programming:</b> C, Java, SQL</p>
+    <p><b>Web:</b> HTML, CSS, JavaScript</p>
+    <p><b>Database:</b> MySQL, SQLite, Prisma ORM</p>
+    <p><b>Backend:</b> Flask, FastAPI, Supabase</p>
+    <p><b>Tools:</b> Loopa, Freebuff, GitHub, Git, Netlify, Render</p>
+  </div>
+</section>
+
+<section>
+  <div class="twocol">
+    <div>
+      <h2>Certifications</h2>
+      <ul>
+        <li>NPTEL – Python for Data Science (69%)</li>
+        <li>NPTEL – The Joy of Computing using Python (58%)</li>
+        <li>NPTEL – Developing Soft Skills and Personality (78%)</li>
+        <li>NPTEL – Design Thinking: A Primer (69%)</li>
+        <li>Data Science Virtual Internship Certificate – CodTech IT Solutions Pvt Ltd</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Areas of Interest</h2>
+      <ul>
+        <li>Full-Stack Development</li>
+        <li>Data Science and AI</li>
+        <li>Cybersecurity</li>
+        <li>AI Agents</li>
+      </ul>
+      <h2 style="margin-top:8pt;">Coding Profiles</h2>
+      <ul>
+        <li>LeetCode</li>
+        <li>HackerRank</li>
+        <li>Skillrack</li>
+      </ul>
+      <h2 style="margin-top:8pt;">Languages</h2>
+      <ul>
+        <li>English</li>
+        <li>Tamil</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

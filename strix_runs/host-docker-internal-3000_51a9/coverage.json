@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-22 17:46:27 UTC",
+  "run_id": "host-docker-internal-3000_51a9",
+  "run_name": "host-docker-internal-3000_51a9",
+  "scope": {
+    "targets": [
+      {
+        "type": "web_application",
+        "details": {
+          "target_url": "http://host.docker.internal:3000"
+        },
+        "original": "http://host.docker.internal:3000"
+      }
+    ],
+    "scan_mode": "quick",
+    "scope_mode": "auto",
+    "diff_scope": {
+      "active": false,
+      "mode": "auto"
+    },
+    "instruction": "Perform authenticated testing using credentials: admin@scgip.test:Admin@123 (admin portal at /login). This is the owner's own local development application. Focus on injection flaws, broken access control between citizen/officer/admin roles, IDOR on complaint IDs and API routes, and session handling."
+  },
+  "summary": {
+    "surfaces_reviewed": 0,
+    "outcomes": {},
+    "findings_filed": 0,
+    "gaps": 0
+  },
+  "machine_observed": {
+    "agents": [],
+    "skills_exercised": [],
+    "findings_filed": 0,
+    "source": "runtime"
+  },
+  "completeness": {
+    "complete": false,
+    "scan_status": "running",
+    "exit_reason": null,
+    "caveats": [
+      "The scan ended with status 'running' rather than completing, so coverage reflects only the work finished before it stopped."
+    ]
+  },
+  "entries": [],
+  "gaps": []
+}

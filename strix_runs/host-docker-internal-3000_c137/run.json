@@ -1,0 +1,50 @@
+{
+  "run_id": "host-docker-internal-3000_c137",
+  "run_name": "host-docker-internal-3000_c137",
+  "start_time": "2026-09-22T17:32:18.149660+00:00",
+  "end_time": null,
+  "status": "running",
+  "auth_mode": "api_key",
+  "targets_info": [
+    {
+      "type": "web_application",
+      "details": {
+        "target_url": "http://host.docker.internal:3000"
+      },
+      "original": "http://host.docker.internal:3000"
+    }
+  ],
+  "llm_usage": {
+    "requests": 0,
+    "input_tokens": 0,
+    "input_tokens_details": [
+      {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      }
+    ],
+    "output_tokens": 0,
+    "output_tokens_details": [
+      {
+        "reasoning_tokens": 0
+      }
+    ],
+    "total_tokens": 0,
+    "request_usage_entries": [],
+    "cost": 0.0,
+    "agents": []
+  },
+  "scan_mode": "deep",
+  "instruction": "Perform authenticated testing using credentials: admin@scgip.test:Admin@123 (admin portal at /login). This is the owner's own local development application. Focus on injection flaws, broken access control between citizen/officer/admin roles, IDOR on complaint IDs and API routes, and session handling.",
+  "user_instruction": "Perform authenticated testing using credentials: admin@scgip.test:Admin@123 (admin portal at /login). This is the owner's own local development application. Focus on injection flaws, broken access control between citizen/officer/admin roles, IDOR on complaint IDs and API routes, and session handling.",
+  "non_interactive": false,
+  "local_sources": [],
+  "workspace_files": [],
+  "workspace_mount": null,
+  "diff_scope": {
+    "active": false,
+    "mode": "auto"
+  },
+  "scope_mode": "auto",
+  "diff_base": null
+}
