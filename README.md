@@ -58,13 +58,13 @@ npm run dev
 
 Open http://localhost:3000
 
-### Demo accounts (after seeding)
+### Demo account (after seeding)
 
 | Role | Email | Password |
 |---|---|---|
-| Admin | `admin@scgip.gov` | `Admin@123` |
-| Officer | `officer@scgip.gov` | `Officer@123` |
-| Citizen | `citizen@example.com` | `Citizen@123` |
+| Citizen (demo) | `citizen@example.com` | `Citizen@123` |
+
+> Only a demo citizen is seeded. The admin account is **not** in the repo — it is created privately via `scripts/admin-cleanup.ts` with `OWNER_PW`. There is exactly one admin, and its password is not public.
 
 > Demo credentials only — change them for any real deployment.
 

@@ -1,34 +1,14 @@
 import { PrismaClient } from "@prisma/client"
-import bcrypt from "bcryptjs"
 
 const db = new PrismaClient()
 
 async function main() {
   console.log("Seeding...")
 
-  // Admin (change the password after first login in production)
-  await db.user.upsert({
-    where: { email: "admin@scgip.gov" },
-    update: { passwordHash: await bcrypt.hash("Admin@123", 10), role: "admin" },
-    create: {
-      email: "admin@scgip.gov",
-      passwordHash: await bcrypt.hash("Admin@123", 10),
-      name: "System Administrator",
-      role: "admin",
-    },
-  })
-
-  // Corporation officer (Chennai Corporation style role)
-  await db.user.upsert({
-    where: { email: "officer@scgip.gov" },
-    update: { passwordHash: await bcrypt.hash("Officer@123", 10), role: "officer" },
-    create: {
-      email: "officer@scgip.gov",
-      passwordHash: await bcrypt.hash("Officer@123", 10),
-      name: "Zonal Sanitation Officer",
-      role: "officer",
-    },
-  })
+  // SECURITY: no admin/officer accounts are seeded.
+  // The single admin (litheshs2007@gmail.com) is created/managed via
+  // `npx tsx scripts/admin-cleanup.ts` with OWNER_PW set — passwords
+  // must never live in this public repo.
 
   // Demo citizen
   await db.user.upsert({
@@ -98,9 +78,8 @@ async function main() {
   }
 
   console.log("Seed complete:")
-  console.log("  admin    admin@scgip.gov / Admin@123")
-  console.log("  officer  officer@scgip.gov / Officer@123")
   console.log("  citizen  citizen@example.com / Citizen@123")
+  console.log("  (admin is NOT seeded — manage via scripts/admin-cleanup.ts)")
 }
 
 main()

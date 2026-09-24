@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:prod": "prisma migrate deploy && tsx scripts/prod-init.ts && next start",
     "lint": "eslint .",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
