@@ -7,8 +7,8 @@ import { transition } from "@/lib/server/workflow"
  * platform (status flips, field updates). Protected by a shared secret.
  */
 export async function POST(request: NextRequest) {
-  const secret = process.env.AUTHORITY_WEBHOOK_SECRET || ""
-  if (secret && request.headers.get("X-Webhook-Secret") !== secret) {
+  const secret = process.env.AUTHORITY_WEBHOOK_SECRET
+  if (!secret || request.headers.get("X-Webhook-Secret") !== secret) {
     return Response.json({ error: "Forbidden" }, { status: 403 })
   }
 

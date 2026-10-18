@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { requireRole } from "@/lib/server/auth";
 
 const FASTAPI_URL = process.env.FASTAPI_URL || "http://127.0.0.1:8000";
 
@@ -194,6 +195,13 @@ export async function GET() {
 
 // ─── POST (Chat) ───────────────────────────────────────────────
 export async function POST(request: NextRequest) {
+  // F-04: require a live session for chat (GET/health stays public).
+  if (!(await requireRole(["citizen", "officer", "admin"]))) {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   try {
     const body = await request.json();
     const { message, complaints } = body;

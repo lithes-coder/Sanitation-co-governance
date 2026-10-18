@@ -280,10 +280,10 @@ export default function WatsonxPage() {
               <Brain className="w-5 h-5 text-blue-500" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">IBM watsonx</h1>
-              <p className="text-muted-foreground text-sm">AI Governance, NLP & Infrastructure Monitoring</p>
+              <h1 className="text-2xl font-bold text-foreground">AI Governance Dashboard</h1>
+              <p className="text-muted-foreground text-sm">Fairness, sentiment & infrastructure monitoring — built on the SCGIP data model</p>
             </div>
-            <Badge className="ml-auto bg-blue-500/10 text-blue-500 border-blue-500/20">Powered by watsonx</Badge>
+            <Badge variant="outline" className="ml-auto text-amber-600 border-amber-500/30 bg-amber-500/5">Prototype · local simulation</Badge>
           </div>
         </div>
 
@@ -322,7 +322,7 @@ export default function WatsonxPage() {
                   <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border">
                     <span className="text-xs text-muted-foreground">Model</span>
                     <span className="text-sm font-semibold text-foreground">llama3.2:3b</span>
-                    <span className="text-[10px] text-blue-500">via Ollama</span>
+                    <span className="text-[10px] text-blue-500">prototype · no live LLM</span>
                   </div>
                   <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border">
                     <span className="text-xs text-muted-foreground">Avg Response</span>
@@ -350,7 +350,7 @@ export default function WatsonxPage() {
                   <Shield className="w-5 h-5 text-green-500" />
                   AI Fairness & Governance Metrics
                 </CardTitle>
-                <CardDescription>watsonx AI Fairness 360 — bias detection and model transparency</CardDescription>
+                <CardDescription>Governance metrics derived from SCGIP complaint data (resolution rate, satisfaction, verification, escalation) — illustrative dashboard metrics, not an external AI service.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -450,9 +450,9 @@ export default function WatsonxPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageSquare className="w-5 h-5 text-purple-500" />
-                  watsonx NLP — Complaint Sentiment Analysis
+                  Complaint Sentiment Analysis (keyword-based prototype)
                 </CardTitle>
-                <CardDescription>Real-time sentiment classification and emotion detection on citizen complaints</CardDescription>
+                <CardDescription>Illustrative sentiment/emotion/category classification built from keyword matching on complaint descriptions — a prototype pattern, not a trained NLP model.</CardDescription>
               </CardHeader>
               <CardContent>
                 {sampleComplaints.length === 0 ? (
@@ -614,9 +614,9 @@ export default function WatsonxPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Activity className="w-5 h-5 text-orange-500" />
-                  IBM Maximo — Sanitation Asset Monitoring
+                  Infrastructure Health Monitoring (prototype)
                 </CardTitle>
-                <CardDescription>Infrastructure health tracking across all wards with predictive maintenance</CardDescription>
+                <CardDescription>Illustrative asset-health dashboard seeded from ward complaint patterns — a prototype monitoring view, not a live asset-telemetry feed.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="overflow-x-auto">
@@ -674,9 +674,9 @@ export default function WatsonxPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Layers className="w-5 h-5 text-indigo-500" />
-                  IBM watsonx Architecture — System Overview
+                  AI Pipeline Concept — System Overview
                 </CardTitle>
-                <CardDescription>Complete AI pipeline from citizen interaction to intelligent response</CardDescription>
+                <CardDescription>Reference architecture for how a future AI-assisted SCGIP could be layered on the existing platform (chatbot → agent orchestration → data). Concept diagram, not a deployed pipeline.</CardDescription>
               </CardHeader>
               <CardContent>
                 {/* Architecture Flow */}
@@ -746,7 +746,7 @@ export default function WatsonxPage() {
                   <div className="flex items-center justify-center">
                     <div className="flex flex-col items-center gap-1">
                       <ArrowRight className="w-5 h-5 text-muted-foreground rotate-90" />
-                      <span className="text-[10px] text-muted-foreground">LangGraph State Machine</span>
+                      <span className="text-[10px] text-muted-foreground">Agent orchestration (concept)</span>
                     </div>
                   </div>
 
@@ -756,13 +756,13 @@ export default function WatsonxPage() {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
                       <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border">
                         <Cpu className="w-5 h-5 text-cyan-500" />
-                        <span className="text-sm font-medium text-foreground">Ollama LLM</span>
-                        <span className="text-[10px] text-muted-foreground">llama3.2:3b — local inference</span>
+                        <span className="text-sm font-medium text-foreground">Local LLM (future slot)</span>
+                        <span className="text-[10px] text-muted-foreground"> reserved for a real local model, e.g. Ollama — not deployed here</span>
                       </div>
                       <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border">
                         <Database className="w-5 h-5 text-yellow-500" />
-                        <span className="text-sm font-medium text-foreground">FAISS Vector DB</span>
-                        <span className="text-[10px] text-muted-foreground">nomic-embed-text embeddings</span>
+                        <span className="text-sm font-medium text-foreground">Vector DB (future slot)</span>
+                        <span className="text-[10px] text-muted-foreground"> reserved for a real vector store, e.g. FAISS — not deployed here</span>
                       </div>
                       <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border">
                         <Lock className="w-5 h-5 text-red-500" />
@@ -771,8 +771,8 @@ export default function WatsonxPage() {
                       </div>
                       <div className="flex flex-col gap-1 p-3 rounded-lg bg-background border border-border">
                         <Activity className="w-5 h-5 text-green-500" />
-                        <span className="text-sm font-medium text-foreground">Maximo Monitoring</span>
-                        <span className="text-[10px] text-muted-foreground">Infrastructure health tracking</span>
+                        <span className="text-sm font-medium text-foreground">Infra Monitoring (prototype)</span>
+                        <span className="text-[10px] text-muted-foreground"> illustrative health dashboard, not live asset telemetry</span>
                       </div>
                     </div>
                   </div>
@@ -833,18 +833,16 @@ export default function WatsonxPage() {
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {[
-                    { name: "Next.js 15", desc: "Frontend", color: "blue" },
+                    { name: "Next.js 16", desc: "Frontend / App Router", color: "blue" },
                     { name: "TypeScript", desc: "Type Safety", color: "blue" },
-                    { name: "Tailwind CSS", desc: "Styling", color: "cyan" },
+                    { name: "Tailwind CSS v4", desc: "Styling (CSS variables)", color: "cyan" },
                     { name: "shadcn/ui", desc: "Components", color: "purple" },
-                    { name: "Python", desc: "Backend", color: "yellow" },
-                    { name: "FastAPI", desc: "API Server", color: "green" },
-                    { name: "LangGraph", desc: "Agent Orchestration", color: "orange" },
-                    { name: "LangChain", desc: "AI Framework", color: "orange" },
-                    { name: "Ollama", desc: "Local LLM", color: "red" },
-                    { name: "FAISS", desc: "Vector Search", color: "yellow" },
+                    { name: "Prisma 6", desc: "ORM (SQLite / Neon)", color: "green" },
+                    { name: "HMAC sessions", desc: "Custom cookie auth", color: "violet" },
                     { name: "Recharts", desc: "Visualizations", color: "cyan" },
-                    { name: "IBM watsonx", desc: "AI Governance", color: "blue" },
+                    { name: "Leaflet / OSM", desc: "Ward map & pins", color: "orange" },
+                    { name: "SSE + poll", desc: "Live update strategy", color: "teal" },
+                    { name: "Neon (PostgreSQL)", desc: "Production DB", color: "green" },
                   ].map((tech) => (
                     <div key={tech.name} className="flex items-center gap-2 p-2 rounded-lg bg-background border border-border">
                       <div className={`w-2 h-2 rounded-full bg-${tech.color}-500`} />
@@ -870,14 +868,11 @@ export default function WatsonxPage() {
                 <HeartHandshake className="w-5 h-5 text-green-500" />
                 Responsible AI Considerations
               </CardTitle>
-              <CardDescription>Our commitment to ethical, fair, and transparent AI — aligned with IBM watsonx AI Fairness 360</CardDescription>
+              <CardDescription>Our commitment to ethical, fair, and transparent governance — the platform publishes SERI, verification, and escalation data so citizens and officers can see how decisions are made.</CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                This project was developed as part of the <span className="font-semibold text-foreground">1M1B AI for Sustainability Virtual Internship</span>,
-                in collaboration with <span className="font-semibold text-foreground">IBM SkillsBuild & AICTE</span>.
-                We adhere to the highest standards of responsible AI development.
-              </p>
+            <CardContent>                <p className="text-sm text-muted-foreground">
+                  This dashboard is a <span className="font-semibold text-foreground">prototype</span> built on SCGIP&apos;s real data model — it illustrates the kind of AI-governance oversight a civic platform could expose (fairness, sentiment, infrastructure health, explainability) using only the complaint records, SERI scores, and verification data already in the system.
+                </p>
             </CardContent>
           </Card>
 
@@ -893,24 +888,24 @@ export default function WatsonxPage() {
               </CardHeader>
               <CardContent className="flex flex-col gap-3">
                 <p className="text-sm text-muted-foreground">
-                  Our AI system ensures equitable treatment across all 8 wards, regardless of demographics or complaint volume.
+                  The live SCGIP platform already bakes fairness into its data model: SERI scores every ward, verification scores hold resolutions accountable, and escalation ensures no complaint is left past SLA.
                 </p>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">SERI (Sanitation Equity & Risk Index) monitors distribution fairness</span>
+                    <span className="text-xs text-foreground">SERI (Sanitation Equity & Risk Index) monitors distribution fairness across wards</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">Equal complaint processing across all wards — no ward prioritized</span>
+                    <span className="text-xs text-foreground">Community verification holds resolutions accountable — low scores reopen the complaint</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">Fairness Index: {fairnessIndex}% — calculated from satisfaction + verification scores</span>
+                    <span className="text-xs text-foreground">Fairness Index: {fairnessIndex}% — computed from satisfaction + verification (illustrative metric)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">AI routing is deterministic — same query gets same response regardless of user</span>
+                    <span className="text-xs text-foreground">Auto-escalation enforces the 30-day SLA — no complaint silently ignored</span>
                   </div>
                 </div>
               </CardContent>
@@ -951,13 +946,13 @@ export default function WatsonxPage() {
 
             {/* Ethics */}
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-green-500" />
-                  Ethics
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-3">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-green-500" />
+                Responsible Design (prototype)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-3">
                 <p className="text-sm text-muted-foreground">
                   Our AI is designed to support — never replace — human decision-making in governance.
                 </p>
@@ -997,19 +992,19 @@ export default function WatsonxPage() {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">Local-first architecture: Ollama runs entirely on-device</span>
+                    <span className="text-xs text-foreground">Local-first by default: the deployed SCGIP chat runs as a knowledge-base/RAG-free prototype on the Vercel edge — no mandatory external API calls for core flows.</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">No user data sent to external cloud APIs (OpenAI, Anthropic, etc.)</span>
+                    <span className="text-xs text-foreground">No user data sent to external cloud APIs for the deployed platform (chat may delegate to a sidecar only when one is configured).</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">Role-based access control — citizens only see their own complaints</span>
+                    <span className="text-xs text-foreground">Role-based access control — citizens only see their own complaints; admins and officers have scoped access.</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span className="text-xs text-foreground">Vector embeddings stored locally (FAISS) — no external vector DB</span>
+                    <span className="text-xs text-foreground">Session cookies are HMAC-signed and role-gated — no JWT, no external identity provider required.</span>
                   </div>
                 </div>
               </CardContent>
@@ -1017,41 +1012,31 @@ export default function WatsonxPage() {
           </div>
 
           {/* IBM BOB Development */}
-          <Card className="border-blue-500/20 bg-blue-500/5">
+          <Card className="border-amber-500/20 bg-amber-500/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Cpu className="w-5 h-5 text-blue-500" />
-                Development with IBM Bob
+                <AlertTriangle className="w-5 h-5 text-amber-500" />
+                Prototype status
               </CardTitle>
-              <CardDescription>AI-assisted development process using IBM&apos;s coding agent</CardDescription>
+              <CardDescription>What is and isn't real in this dashboard</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-3">
                 <p className="text-sm text-muted-foreground">
-                  This project was developed using <span className="font-semibold text-foreground">IBM Bob</span> — IBM&apos;s AI coding agent —
-                  as an integral part of the development workflow, fulfilling the internship requirement to incorporate IBM BOB.
+                  This AI Governance Dashboard is a <span className="font-semibold text-foreground">prototype</span> layered on top of SCGIP&apos;s real data model. It is <strong className="text-foreground">not</strong> wired to IBM watsonx, Ollama, FAISS, LangGraph, or any external AI service.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  <div className="flex items-center gap-2 p-2 rounded-lg bg-background border border-border">
-                    <Brain className="w-4 h-4 text-blue-500" />
-                    <div>
-                      <span className="text-xs font-medium text-foreground">Code Generation</span>
-                      <p className="text-[10px] text-muted-foreground">AI-assisted component creation</p>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-background border border-border">
+                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                    <span className="text-xs text-foreground"><strong className="text-foreground">Real:</strong> the metrics, sentiment, asset-health, and SERI values are computed from actual SCGIP complaint records at render time.</span>
                   </div>
-                  <div className="flex items-center gap-2 p-2 rounded-lg bg-background border border-border">
-                    <Eye className="w-4 h-4 text-purple-500" />
-                    <div>
-                      <span className="text-xs font-medium text-foreground">Code Review</span>
-                      <p className="text-[10px] text-muted-foreground">Automated bug detection & fixes</p>
-                    </div>
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-background border border-border">
+                    <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                    <span className="text-xs text-foreground"><strong className="text-foreground">Prototype:</strong> the AI-ness is illustrative — keyword-based sentiment, seeded asset health, and a concept architecture diagram. There is no LLM, no vector DB, and no agent orchestration running.</span>
                   </div>
-                  <div className="flex items-center gap-2 p-2 rounded-lg bg-background border border-border">
-                    <FileText className="w-4 h-4 text-green-500" />
-                    <div>
-                      <span className="text-xs font-medium text-foreground">Architecture Design</span>
-                      <p className="text-[10px] text-muted-foreground">System design assistance</p>
-                    </div>
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-background border border-border">
+                    <Shield className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+                    <span className="text-xs text-foreground"><strong className="text-foreground">Honest framing:</strong> this page is meant as a design probe for how a civic platform could expose AI-assisted governance oversight — not as a claim that these AI services are deployed.</span>
                   </div>
                 </div>
               </div>
